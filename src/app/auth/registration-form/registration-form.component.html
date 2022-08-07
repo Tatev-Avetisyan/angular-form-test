@@ -1,0 +1,84 @@
+
+<div class="container">
+  <div class="form-title"> <h3 > Registration Form <br/> Reactive </h3></div>
+
+  <form  [formGroup]="registrationForm" (ngSubmit)="submitData()">
+    <div class="form-label">
+      <label  for="firstname" > FirstName</label> <br>
+      <input
+        formControlName = "firstname"
+        type="text" id="firstname"
+        class="form-input"
+        name = "firstname"
+        required>
+    </div>
+<!--    error notification-->
+    <div *ngIf="firstname.invalid && (firstname.touched || firstname.dirty )">
+      <span class = "error" *ngIf="firstname.errors?.required"> Firstname is required</span>
+      <span class = "error" *ngIf="firstname.errors?.pattern"> Enter only character</span>
+    </div>
+    <pre></pre>
+    <div class="form-label">
+      <label for="lastname" > LastName</label> <br>
+      <input
+        formControlName = "lastname"
+        type="text"
+        id="lastname"
+        class="form-input"
+        name = "lastname"
+        required>
+    </div>
+    <div *ngIf="lastname.invalid && (lastname.touched || lastname.dirty )">
+      <span class = "error"*ngIf="lastname.errors?.required"> Lastname is required</span>
+      <span class = "error" *ngIf="lastname.errors?.pattern"> Enter only character</span>
+    </div>
+    <pre></pre>
+    <div class="form-label">
+      <label for="phoneNumber" > Phone Number</label> <br>
+      <input
+        formControlName = "phoneNumber"
+        type="phone"
+        id="phoneNumber"
+        class="form-input"
+        name="phoneNumber"
+        required>
+      <div *ngIf="phoneNumber.invalid && (phoneNumber.touched || phoneNumber.dirty )">
+        <span class = "error"*ngIf="phoneNumber.errors?.required"> Phone Number is required</span>
+        <span class = "error" *ngIf="phoneNumber.errors?.pattern"> Enter only numbers</span>
+      </div>
+    </div>
+    <div class="form-label">
+      <label for="email" > E-mail</label> <br>
+      <input
+        formControlName = "email"
+        type="email"
+        id="email"
+        class="form-input"
+        name = "email"
+        required>
+    </div>
+    <div *ngIf="email.invalid && (email.touched || email.dirty )">
+      <span class = "error"*ngIf="email.errors?.required"> E-mail is required</span>
+      <span class = "error" *ngIf="email.errors?.email"> Enter valid email</span>
+    </div>
+    <pre></pre>
+    <div class="form-label">
+      <label for="password" > Password</label> <br>
+      <input
+        formControlName = "password"
+        type="password"
+        id="password"
+        class="form-input"
+        name="password"
+        required>
+      <div *ngIf="password.invalid && (password.touched || password.dirty )">
+        <span class = "error"*ngIf="password.errors?.required"> Password is required</span>
+      </div>
+    </div>
+
+    <button class="form-btn" [disabled] = "registrationForm.invalid" type= "submit"> Submit</button>
+  </form>
+
+
+
+</div>

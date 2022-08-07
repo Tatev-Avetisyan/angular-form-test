@@ -1,0 +1,86 @@
+
+<div class="container">
+  <div class="form-title">
+    <h3> User Registration <br/>  with ngModel</h3>
+  </div>
+  <form (ngSubmit)="submit()"
+  #myForm = "ngForm">
+    <div
+      class="form-label">
+      <label for="firstname" > FirstName</label> <br>
+      <input
+        type="text" id="firstname"
+        class="form-input"
+        name = "firstname"
+        [(ngModel)]="form.firstname"
+        #firstname = "ngModel"
+      required>
+      <div
+        *ngIf="firstname.invalid && (email.dirty || email.touched)"
+        style="background-color: palevioletred; color: brown " class="form-group"> Email must be valid
+      </div>
+    </div>
+    <pre></pre>
+    <div class="form-label">
+      <label for="lastname" > LastName</label> <br>
+      <input
+        type="text"
+        id="lastname"
+        class="form-input"
+        name = "lastname"
+        [(ngModel)]="form.lastname"
+        #lastname = "ngModel"
+        required>
+    </div>
+    <pre></pre>
+    <div class="form-label">
+      <label for="email" > E-mail</label> <br>
+      <input
+        type="email"
+        id="email"
+        class="form-input"
+        name = "email"
+        [(ngModel)]="form.email"
+        #email = "ngModel" required>
+    </div>
+    <div
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="error"> Email must be valid
+    </div>
+    <pre></pre>
+    <div class="form-label">
+      <label for="password" > Password</label> <br>
+      <input
+        type="password"
+        id="password"
+        class="form-input"
+        name="password"
+        [(ngModel)]="form.password"
+        #password = "ngModel"
+        required>
+    </div>
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="error"> Password must be valid
+    </div>
+    <div class="form-label">
+      <label for="confirmPassword" > Password</label> <br>
+      <input
+        type="password"
+        id="confirmPassword"
+        class="form-input"
+        name="confirmPassword"
+        [(ngModel)]="form.confirmPassword"
+        #confirmPassword = "ngModel"
+        required>
+    </div>
+    <div
+      *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+      class="error"> Confirm-password must be valid
+    </div>
+    <button
+      class="form-btn"
+      [disabled]="myForm.form.invalid"
+      type= "submit"> Submit</button>
+  </form>
+</div>

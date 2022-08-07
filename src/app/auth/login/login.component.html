@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="form-title">
+    <h3> User Login <br/> with ngModel</h3>
+  </div>
+  <form (ngSubmit)="submit()"
+  #myForm = "ngForm" >
+    <div class="form-label">
+      <label for="email" > E-mail</label> <br>
+      <input
+        type="email"
+        id="email"
+        class="form-input"
+        name="email"
+        placeholder="Email" [(ngModel)]="form.email"
+        #email = "ngModel" required>
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="error"> Email is required
+      </div>
+
+    </div>
+    <pre></pre>
+    <div class="form-label">
+      <label for="password" > Password</label> <br>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-input"
+        placeholder="Password"
+        [(ngModel)]="form.password"
+        #password = "ngModel" required>
+      <div
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="error"> Password  is required
+      </div>
+    </div>
+    <button
+      class="form-btn"
+      [disabled]="myForm.form.invalid"
+      type = "submit"> Submit</button>
+  </form>
+</div>
